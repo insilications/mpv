@@ -1,0 +1,14 @@
+# This file contains additional pkgconfig build requirements that did
+# not get picked up automatically. One name per line, no whitespace.
+wayland-protocols
+libva
+libva-drm
+libva-x11
+x11
+xinerama
+xrandr
+xscrnsaver
+xext
+wayland-client
+xkbcommon
+wayland-cursor

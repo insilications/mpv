@@ -1,0 +1,28 @@
+From b1511a485d49de9f355dd98b5224164c3ff83a6b Mon Sep 17 00:00:00 2001
+From: Daniel Charles <daniel.charles@intel.com>
+Date: Mon, 22 Apr 2019 12:58:06 -0700
+Subject: [PATCH 2/2] Makefile: quick wrapper for waf
+
+Signed-off-by: Daniel Charles <daniel.charles@intel.com>
+---
+ Makefile | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 Makefile
+
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000000..8bcd8596c2
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,8 @@
++.DEFAULT_GOAL: premake
++
++premake:
++		$(PYTHON) ./waf configure --prefix=/usr --disable-libass
++install:
++		$(PYTHON) ./waf install $*
++clean:
++		$(PYTHON) ./waf clean
+-- 
+2.20.1
+

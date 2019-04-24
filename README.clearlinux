@@ -1,0 +1,14 @@
+MPV compilation in ClearLinux
+
+MPV uses a python tool waf to configure and compile/install.
+
+A Makefile was introduced so that autospec can blindly use waf
+through the regular build_pattern set to make.
+
+Options are hardcoded inside this Makefile.  The resultant
+build should call only waf instructions to produce installing
+targets
+
+Two add-on patches were included to make waf script available.
+This is the result after running bootstrap.py on mpv git repository which
+takes care of using the right version for waf.
