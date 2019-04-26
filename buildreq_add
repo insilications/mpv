@@ -3,5 +3,5 @@
 zlib-dev
 libva-dev
 mesa-dev
-ffmpeg-dev
+not-ffmpeg-dev
 libX11-dev
