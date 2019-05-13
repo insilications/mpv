@@ -4,7 +4,7 @@
 #
 Name     : mpv
 Version  : 0.29.1
-Release  : 7
+Release  : 9
 URL      : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Source0  : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Summary  : mpv media player client library
@@ -14,6 +14,7 @@ Requires: mpv-bin = %{version}-%{release}
 Requires: mpv-config = %{version}-%{release}
 Requires: mpv-data = %{version}-%{release}
 Requires: mpv-license = %{version}-%{release}
+Requires: mpv-plugins = %{version}-%{release}
 BuildRequires : libX11-dev
 BuildRequires : libva-dev
 BuildRequires : mesa-dev
@@ -66,6 +67,18 @@ Group: Data
 data components for the mpv package.
 
 
+%package dev
+Summary: dev components for the mpv package.
+Group: Development
+Requires: mpv-bin = %{version}-%{release}
+Requires: mpv-data = %{version}-%{release}
+Provides: mpv-devel = %{version}-%{release}
+Requires: mpv = %{version}-%{release}
+
+%description dev
+dev components for the mpv package.
+
+
 %package doc
 Summary: doc components for the mpv package.
 Group: Documentation
@@ -82,6 +95,14 @@ Group: Default
 license components for the mpv package.
 
 
+%package plugins
+Summary: plugins components for the mpv package.
+Group: Default
+
+%description plugins
+plugins components for the mpv package.
+
+
 %prep
 %setup -q -n mpv-0.29.1
 %patch1 -p1
@@ -92,13 +113,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556569083
+export SOURCE_DATE_EPOCH=1557764997
+export GCC_IGNORE_WERROR=1
 export LDFLAGS="${LDFLAGS} -fno-lto"
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1556569083
+export SOURCE_DATE_EPOCH=1557764997
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mpv
 cp LICENSE.GPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.GPL
@@ -125,6 +147,17 @@ cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
 /usr/share/icons/hicolor/scalable/apps/mpv.svg
 /usr/share/icons/hicolor/symbolic/apps/mpv-symbolic.svg
 
+%files dev
+%defattr(-,root,root,-)
+/usr/include/mpv/client.h
+/usr/include/mpv/opengl_cb.h
+/usr/include/mpv/qthelper.hpp
+/usr/include/mpv/render.h
+/usr/include/mpv/render_gl.h
+/usr/include/mpv/stream_cb.h
+/usr/lib/libmpv.so
+/usr/lib64/pkgconfig/mpv.pc
+
 %files doc
 %defattr(0644,root,root,0755)
 %doc /usr/share/doc/mpv/*
@@ -133,3 +166,8 @@ cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/mpv/LICENSE.GPL
 /usr/share/package-licenses/mpv/LICENSE.LGPL
+
+%files plugins
+%defattr(-,root,root,-)
+/usr/lib/libmpv.so.1
+/usr/lib/libmpv.so.1.101.0

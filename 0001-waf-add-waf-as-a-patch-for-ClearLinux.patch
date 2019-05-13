@@ -1,4 +1,4 @@
-From a984bf790573e29d3c0e359a815a658658870ed4 Mon Sep 17 00:00:00 2001
+From 3840e3617171b85777e53b8434f84fa01bf4e33d Mon Sep 17 00:00:00 2001
 From: Daniel Charles <daniel.charles@intel.com>
 Date: Tue, 23 Apr 2019 15:09:08 -0700
 Subject: [PATCH 1/2] waf: add waf as a patch for ClearLinux
@@ -15,7 +15,7 @@ Signed-off-by: Daniel Charles <daniel.charles@intel.com>
 
 diff --git a/waf b/waf
 new file mode 100755
-index 0000000000..42d36055ba
+index 0000000..42d3605
 --- /dev/null
 +++ b/waf
 @@ -0,0 +1,170 @@
@@ -190,5 +190,5 @@ index 0000000000..42d36055ba
 +#<==
 +#-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEivIt5aBoIuNHTzxwSbTGfAUneqoFAltDdogACgkQSbTGfAUn\neqqy+Q/+KeccLyV5gQT+NBLB8FNexJKiHAKAgwtFwhrJuScD0XpedrsaPkoWfXLW\nSQVM672l/6DNpX7Cu8Z1sKDV5NRu6BecsKJ59xZm3Pv4FT3b+j938/cv4VTCp30v\n18o/Dgp2zoAPcQeiyEw92dGTz7V3xAfWkEj4bc2Fl5cGo4vo+JB56AUfJ+00fKfE\nevVkOly6HSftRgTngiKNXi2uolbXX8zuFMPmRNxny781JJpRHUt87eytMgTBurLv\ngT05JLq4p4TCOnTtrY9MSYdr+KRJooOJB8BmrOIpm8xK3TNXFF57OijsilBgtDwx\nD28f0SnkYUvp55f0j7xhd49QnLG/5DTfqMnIaDz3vG/2mJvGb9UizPLkLgxsHVHn\nsbkX2K2sm7faPZJlTS9VACCPrGVZESCVK9Yvk4x9bINju/TYixqVlyFob3YyicV+\n5BhwoVD6lLNKvVIXrxcgBkJL0D/N5evMe5QV5fP1kpSn9WQg0Kw/fzaR5igJdZrh\n0IsN935Kk75vISIt1KW/2Hm7Ew/Dx1tbLwVD3B4oGmgtV7VV6xUCg4/FNLAx8f9Q\nSNe4VytpHDW6Y2n9Ki13ZPm4gvV071jAxYFxoznmJbYb/QUjlTzMD5H/cY/D9U6H\nYwqm7cZFJ4nI23gwldJNn41i+DyN1k0nfP6h7ZalXxmuqiRr8sA=\n=+zXZ\n-----END PGP SIGNATURE-----\n
 -- 
-2.20.1
+2.21.0
 
