@@ -12,3 +12,4 @@ xext
 wayland-client
 xkbcommon
 wayland-cursor
+libass

@@ -1,1 +1,1 @@
-|| ./waf/waf configure --prefix=/usr --enable-lgpl --disable-libass --exec-prefix=/usr --bindir=/usr/bin --sysconfdir=/etc --datadir=/usr/share --includedir=/usr/include --libdir=/usr/lib64  --mandir=/usr/share/man --disable-static
+|| ./waf/waf configure --prefix=/usr --enable-lgpl --exec-prefix=/usr --bindir=/usr/bin --sysconfdir=/etc --datadir=/usr/share --includedir=/usr/include --libdir=/usr/lib64  --mandir=/usr/share/man --disable-static

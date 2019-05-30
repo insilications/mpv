@@ -4,7 +4,7 @@
 #
 Name     : mpv
 Version  : 0.29.1
-Release  : 9
+Release  : 10
 URL      : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Source0  : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Summary  : mpv media player client library
@@ -19,6 +19,7 @@ BuildRequires : libX11-dev
 BuildRequires : libva-dev
 BuildRequires : mesa-dev
 BuildRequires : not-ffmpeg-dev
+BuildRequires : pkgconfig(libass)
 BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(libva-drm)
 BuildRequires : pkgconfig(libva-x11)
@@ -113,16 +114,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557764997
+export SOURCE_DATE_EPOCH=1559184611
 export GCC_IGNORE_WERROR=1
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1557764997
+export SOURCE_DATE_EPOCH=1559184611
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mpv
+cp Copyright %{buildroot}/usr/share/package-licenses/mpv/Copyright
 cp LICENSE.GPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.GPL
 cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
 %make_install
@@ -164,6 +169,7 @@ cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/mpv/Copyright
 /usr/share/package-licenses/mpv/LICENSE.GPL
 /usr/share/package-licenses/mpv/LICENSE.LGPL
 
