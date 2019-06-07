@@ -4,7 +4,7 @@
 #
 Name     : mpv
 Version  : 0.29.1
-Release  : 12
+Release  : 13
 URL      : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Source0  : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Summary  : mpv media player client library
@@ -65,6 +65,7 @@ Requires: mpv-lib = %{version}-%{release}
 Requires: mpv-bin = %{version}-%{release}
 Requires: mpv-data = %{version}-%{release}
 Provides: mpv-devel = %{version}-%{release}
+Requires: mpv = %{version}-%{release}
 
 %description dev
 dev components for the mpv package.
@@ -106,11 +107,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559863968
+export SOURCE_DATE_EPOCH=1559943465
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
+
 %install
-export SOURCE_DATE_EPOCH=1559863968
+export SOURCE_DATE_EPOCH=1559943465
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mpv
 cp Copyright %{buildroot}/usr/share/package-licenses/mpv/Copyright
@@ -133,7 +140,6 @@ cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
 /usr/share/icons/hicolor/64x64/apps/mpv.png
 /usr/share/icons/hicolor/scalable/apps/mpv.svg
 /usr/share/icons/hicolor/symbolic/apps/mpv-symbolic.svg
-/usr/share/package-licenses/mpv/Copyright
 
 %files dev
 %defattr(-,root,root,-)
@@ -156,6 +162,7 @@ cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
 /usr/lib64/libmpv.so.1.101.0
 
 %files license
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mpv/Copyright
 /usr/share/package-licenses/mpv/LICENSE.GPL
 /usr/share/package-licenses/mpv/LICENSE.LGPL
