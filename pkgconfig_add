@@ -13,3 +13,5 @@ wayland-client
 xkbcommon
 wayland-cursor
 libass
+alsa
+libpulse

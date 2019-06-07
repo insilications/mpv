@@ -4,7 +4,7 @@
 #
 Name     : mpv
 Version  : 0.29.1
-Release  : 13
+Release  : 15
 URL      : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Source0  : https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
 Summary  : mpv media player client library
@@ -18,7 +18,9 @@ BuildRequires : libX11-dev
 BuildRequires : libva-dev
 BuildRequires : mesa-dev
 BuildRequires : not-ffmpeg-dev
+BuildRequires : pkgconfig(alsa)
 BuildRequires : pkgconfig(libass)
+BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(libva-drm)
 BuildRequires : pkgconfig(libva-x11)
@@ -107,7 +109,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559943465
+export SOURCE_DATE_EPOCH=1559943935
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -117,7 +119,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1559943465
+export SOURCE_DATE_EPOCH=1559943935
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mpv
 cp Copyright %{buildroot}/usr/share/package-licenses/mpv/Copyright
