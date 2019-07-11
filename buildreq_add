@@ -5,3 +5,5 @@ libva-dev
 mesa-dev
 not-ffmpeg-dev
 libX11-dev
+Vulkan-Loader-dev
+Vulkan-Headers-dev

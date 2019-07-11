@@ -1,3 +1,4 @@
+libmpv.so.1:mpv_abort_async_command
 libmpv.so.1:mpv_client_api_version
 libmpv.so.1:mpv_client_name
 libmpv.so.1:mpv_command

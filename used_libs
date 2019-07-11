@@ -13,7 +13,9 @@ libc.so.6
 libdl.so.2
 libdrm.so.2
 libgbm.so.1
+liblcms2.so.2
 libm.so.6
+libplacebo.so.18
 libpthread.so.0
 libpulse.so.0
 librt.so.1
@@ -23,6 +25,7 @@ libva-drm.so.2
 libva-wayland.so.2
 libva-x11.so.2
 libva.so.2
+libvulkan.so.1
 libwayland-client.so.0
 libwayland-cursor.so.0
 libwayland-egl.so.1
