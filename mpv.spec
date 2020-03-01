@@ -4,7 +4,7 @@
 #
 Name     : mpv
 Version  : 0.29.0.343.379950ce0
-Release  : 18
+Release  : 19
 URL      : https://github.com/mpv-player/mpv/archive/v0.29.0-343-gc379950ce0.tar.gz
 Source0  : https://github.com/mpv-player/mpv/archive/v0.29.0-343-gc379950ce0.tar.gz
 Summary  : mpv media player client library
@@ -27,6 +27,7 @@ BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(libva-drm)
 BuildRequires : pkgconfig(libva-x11)
+BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(wayland-client)
 BuildRequires : pkgconfig(wayland-cursor)
 BuildRequires : pkgconfig(wayland-protocols)
@@ -104,6 +105,7 @@ license components for the mpv package.
 
 %prep
 %setup -q -n mpv-c379950ce08932dec839f18926183c7b05b57d00
+cd %{_builddir}/mpv-c379950ce08932dec839f18926183c7b05b57d00
 %patch1 -p1
 %patch2 -p1
 
@@ -112,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563233323
+export SOURCE_DATE_EPOCH=1583045008
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -122,13 +124,15 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1563233323
+export SOURCE_DATE_EPOCH=1583045008
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mpv
-cp Copyright %{buildroot}/usr/share/package-licenses/mpv/Copyright
-cp LICENSE.GPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.GPL
-cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
+cp %{_builddir}/mpv-c379950ce08932dec839f18926183c7b05b57d00/Copyright %{buildroot}/usr/share/package-licenses/mpv/1afab820fd1a26aee428addf611348ba45ccb8e5
+cp %{_builddir}/mpv-c379950ce08932dec839f18926183c7b05b57d00/LICENSE.GPL %{buildroot}/usr/share/package-licenses/mpv/c76a43b337cf9290dfcc982c1e51d6561900793a
+cp %{_builddir}/mpv-c379950ce08932dec839f18926183c7b05b57d00/LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/3704f4680301a60004b20f94e0b5b8c7ff1484a9
 %make_install
+## Remove excluded files
+rm -f %{buildroot}/usr/etc/mpv/encoding-profiles.conf
 
 %files
 %defattr(-,root,root,-)
@@ -168,6 +172,6 @@ cp LICENSE.LGPL %{buildroot}/usr/share/package-licenses/mpv/LICENSE.LGPL
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/mpv/Copyright
-/usr/share/package-licenses/mpv/LICENSE.GPL
-/usr/share/package-licenses/mpv/LICENSE.LGPL
+/usr/share/package-licenses/mpv/1afab820fd1a26aee428addf611348ba45ccb8e5
+/usr/share/package-licenses/mpv/3704f4680301a60004b20f94e0b5b8c7ff1484a9
+/usr/share/package-licenses/mpv/c76a43b337cf9290dfcc982c1e51d6561900793a

@@ -14,8 +14,9 @@ libdl.so.2
 libdrm.so.2
 libgbm.so.1
 liblcms2.so.2
+libluajit-5.1.so.2
 libm.so.6
-libplacebo.so.18
+libplacebo.so.21
 libpthread.so.0
 libpulse.so.0
 librt.so.1

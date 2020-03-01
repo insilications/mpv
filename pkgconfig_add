@@ -16,3 +16,4 @@ wayland-cursor
 libass
 alsa
 libpulse
+luajit
