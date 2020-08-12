@@ -141,8 +141,17 @@ vapoursynth
 vapoursynth-script
 vdpau
 vidstab
+rubberband
 vorbis
+dvdread
+dvdnav
 vpx
+vulkan
+vamp-hostsdk
+vamp-sdk
+vamp
+md4c-html
+md4c
 wayland-client
 wayland-cursor
 wayland-protocols
