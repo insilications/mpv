@@ -1,5 +1,8 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+# numactl
+# numactl-dev
+# numactl-staticdev
 alsa-lib-dev
 alsa-lib-lib
 binutils
@@ -11,6 +14,8 @@ brotli-staticdev
 bzip2
 bzip2-dev
 bzip2-staticdev
+xauth
+xvfb-run
 cairo
 cairo-dev
 cuda
@@ -147,6 +152,8 @@ libxvid-staticdev
 libzimg-dev
 libzimg-staticdev
 LuaJIT
+LuaJIT-dev
+LuaJIT-staticdev
 mediasdk-dev
 mesa
 mesa-dev
@@ -156,9 +163,6 @@ nasm-bin
 nettle
 nettle-dev
 nettle-staticdev
-numactl
-numactl-dev
-numactl-staticdev
 nv-codec-headers
 nv-codec-headers-dev
 nvidia

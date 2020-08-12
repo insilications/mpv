@@ -1,5 +1,6 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+# numa
 alsa
 aom
 atomic_ops
@@ -120,7 +121,6 @@ mm-common-libstdc++
 mm-common-util
 mount
 nettle
-numa
 ogg
 openssl
 opus
