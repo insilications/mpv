@@ -101,6 +101,11 @@ libturbojpeg
 libva
 libva-drm
 libva-x11
+libva-drm
+libva-glx
+libva-wayland
+libva-x11
+libva
 libwebp
 libwebpdecoder
 libwebpdemux

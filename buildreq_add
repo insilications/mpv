@@ -59,10 +59,12 @@ ladspa_sdk-dev
 ladspa_sdk-lib
 lcms2
 lcms2-dev
+lcms2-staticdev
 libaom-dev
 libaom-staticdev
 libarchive
 libarchive-dev
+libarchive-staticdev
 libass-dev
 libass-lib
 libass-staticdev
@@ -109,6 +111,10 @@ libunistring-dev
 libunistring-staticdev
 libva
 libva-dev
+libva-lib
+mesa-lib
+mesa-dev
+mesa
 libvapoursynth
 libvapoursynth-dev
 libvapoursynth-python
@@ -116,6 +122,8 @@ libvapoursynth-python3
 libvapoursynth-staticdev
 libvdpau
 libvdpau-dev
+pkg-config
+pkg-config-dev
 libvidstab-dev
 libvidstab-staticdev
 libvorbis-dev
