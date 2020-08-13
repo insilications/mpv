@@ -17,3 +17,6 @@ export LD_LIBRARY_PATH="/usr/cuda/lib64:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/n
 export PATH="/usr/cuda/bin:/usr/nvidia/bin:$PATH"
 #export CCACHE_DISABLE=1
 export DISPLAY=:0.0
+export VDPAU_DRIVER="nvidia"
+export LIBVA_DRIVER_NAME="vdpau"
+export LIBVA_DRIVERS_PATH="/usr/lib64/dri"
