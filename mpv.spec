@@ -13,6 +13,8 @@ Group    : Development/Tools
 License  : GPL-2.0
 BuildRequires : ImageMagick-dev
 BuildRequires : LuaJIT
+BuildRequires : LuaJIT-dev
+BuildRequires : LuaJIT-staticdev
 BuildRequires : SDL2-dev
 BuildRequires : Sphinx
 BuildRequires : Vulkan-Headers-dev
@@ -62,7 +64,6 @@ BuildRequires : gmp-dev
 BuildRequires : gmp-staticdev
 BuildRequires : gnutls
 BuildRequires : gnutls-dev
-BuildRequires : gnutls-staticdev
 BuildRequires : graphite-dev
 BuildRequires : graphite-staticdev
 BuildRequires : gsm-dev
@@ -75,11 +76,13 @@ BuildRequires : ladspa_sdk-dev
 BuildRequires : ladspa_sdk-lib
 BuildRequires : lcms2
 BuildRequires : lcms2-dev
+BuildRequires : lcms2-staticdev
 BuildRequires : libX11-dev
 BuildRequires : libaom-dev
 BuildRequires : libaom-staticdev
 BuildRequires : libarchive
 BuildRequires : libarchive-dev
+BuildRequires : libarchive-staticdev
 BuildRequires : libass-dev
 BuildRequires : libass-lib
 BuildRequires : libass-staticdev
@@ -97,6 +100,12 @@ BuildRequires : libdrm
 BuildRequires : libdrm-dev
 BuildRequires : libdrm-lib
 BuildRequires : libdrm-staticdev
+BuildRequires : libdvdnav
+BuildRequires : libdvdnav-dev
+BuildRequires : libdvdnav-staticdev
+BuildRequires : libdvdread
+BuildRequires : libdvdread-dev
+BuildRequires : libdvdread-staticdev
 BuildRequires : libfdk_aac-dev
 BuildRequires : libfdk_aac-staticdev
 BuildRequires : libffado
@@ -114,6 +123,9 @@ BuildRequires : libmp3lame-lib
 BuildRequires : libmp3lame-staticdev
 BuildRequires : libogg-dev
 BuildRequires : libogg-staticdev
+BuildRequires : libplacebo
+BuildRequires : libplacebo-dev
+BuildRequires : libplacebo-staticdev
 BuildRequires : libpng-dev
 BuildRequires : libpng-staticdev
 BuildRequires : libsrt-dev
@@ -155,6 +167,9 @@ BuildRequires : libxvid-dev
 BuildRequires : libxvid-staticdev
 BuildRequires : libzimg-dev
 BuildRequires : libzimg-staticdev
+BuildRequires : md4c
+BuildRequires : md4c-dev
+BuildRequires : md4c-staticdev
 BuildRequires : mediasdk-dev
 BuildRequires : mesa
 BuildRequires : mesa-dev
@@ -165,9 +180,6 @@ BuildRequires : nasm-bin
 BuildRequires : nettle
 BuildRequires : nettle-dev
 BuildRequires : nettle-staticdev
-BuildRequires : numactl
-BuildRequires : numactl-dev
-BuildRequires : numactl-staticdev
 BuildRequires : nv-codec-headers
 BuildRequires : nv-codec-headers-dev
 BuildRequires : nvidia
@@ -195,6 +207,8 @@ BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(Magick++)
 BuildRequires : pkgconfig(MagickCore)
 BuildRequires : pkgconfig(MagickWand)
+BuildRequires : pkgconfig(SPIRV-Tools)
+BuildRequires : pkgconfig(SPIRV-Tools-shared)
 BuildRequires : pkgconfig(alsa)
 BuildRequires : pkgconfig(aom)
 BuildRequires : pkgconfig(atomic_ops)
@@ -222,7 +236,10 @@ BuildRequires : pkgconfig(dbus-c++-1)
 BuildRequires : pkgconfig(dbus-c++-ecore-1)
 BuildRequires : pkgconfig(dbus-c++-glib-1)
 BuildRequires : pkgconfig(dri)
+BuildRequires : pkgconfig(dvdnav)
+BuildRequires : pkgconfig(dvdread)
 BuildRequires : pkgconfig(egl)
+BuildRequires : pkgconfig(epoxy)
 BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(fdisk)
 BuildRequires : pkgconfig(fdk-aac)
@@ -305,11 +322,12 @@ BuildRequires : pkgconfig(libwebpmux)
 BuildRequires : pkgconfig(libxml++-3.0)
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(luajit)
+BuildRequires : pkgconfig(md4c)
+BuildRequires : pkgconfig(md4c-html)
 BuildRequires : pkgconfig(mm-common-libstdc++)
 BuildRequires : pkgconfig(mm-common-util)
 BuildRequires : pkgconfig(mount)
 BuildRequires : pkgconfig(nettle)
-BuildRequires : pkgconfig(numa)
 BuildRequires : pkgconfig(ogg)
 BuildRequires : pkgconfig(openssl)
 BuildRequires : pkgconfig(opus)
@@ -319,19 +337,27 @@ BuildRequires : pkgconfig(pixman-1)
 BuildRequires : pkgconfig(python-3.8)
 BuildRequires : pkgconfig(python-3.8-embed)
 BuildRequires : pkgconfig(readline)
+BuildRequires : pkgconfig(rubberband)
 BuildRequires : pkgconfig(sdl2)
+BuildRequires : pkgconfig(shaderc)
+BuildRequires : pkgconfig(shaderc_combined)
+BuildRequires : pkgconfig(shaderc_static)
 BuildRequires : pkgconfig(smartcols)
 BuildRequires : pkgconfig(speex)
 BuildRequires : pkgconfig(srt)
 BuildRequires : pkgconfig(theora)
 BuildRequires : pkgconfig(uchardet)
 BuildRequires : pkgconfig(uuid)
+BuildRequires : pkgconfig(vamp)
+BuildRequires : pkgconfig(vamp-hostsdk)
+BuildRequires : pkgconfig(vamp-sdk)
 BuildRequires : pkgconfig(vapoursynth)
 BuildRequires : pkgconfig(vapoursynth-script)
 BuildRequires : pkgconfig(vdpau)
 BuildRequires : pkgconfig(vidstab)
 BuildRequires : pkgconfig(vorbis)
 BuildRequires : pkgconfig(vpx)
+BuildRequires : pkgconfig(vulkan)
 BuildRequires : pkgconfig(wayland-client)
 BuildRequires : pkgconfig(wayland-cursor)
 BuildRequires : pkgconfig(wayland-protocols)
@@ -354,6 +380,11 @@ BuildRequires : python3-staticdev
 BuildRequires : rtmpdump
 BuildRequires : rtmpdump-dev
 BuildRequires : rtmpdump-staticdev
+BuildRequires : rubberband-dev
+BuildRequires : rubberband-staticdev
+BuildRequires : shaderc
+BuildRequires : shaderc-dev
+BuildRequires : shaderc-staticdev
 BuildRequires : snappy-dev
 BuildRequires : snappy-staticdev
 BuildRequires : speex-dev
@@ -363,9 +394,15 @@ BuildRequires : speexdsp-staticdev
 BuildRequires : texinfo
 BuildRequires : uchardet
 BuildRequires : uchardet-dev
+BuildRequires : uchardet-staticdev
 BuildRequires : util-linux
 BuildRequires : util-linux-dev
 BuildRequires : util-linux-staticdev
+BuildRequires : vamp-sdk
+BuildRequires : vamp-sdk-dev
+BuildRequires : vamp-sdk-staticdev
+BuildRequires : xauth
+BuildRequires : xvfb-run
 BuildRequires : xz-dev
 BuildRequires : xz-staticdev
 BuildRequires : zlib-dev
@@ -373,12 +410,8 @@ BuildRequires : zlib-staticdev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
-# Ignore missing build ids
-%undefine _missing_build_ids_terminate_build
 # Disable automatic requeriments processing
 AutoReq: no
-# Disable automatic provides processing
-AutoProv: no
 
 %description
 TA ("Tree Allocator") is a wrapper around malloc() and related functions,
@@ -394,36 +427,16 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1596975320
+export SOURCE_DATE_EPOCH=1597321149
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-## altflags1 content
-export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe"
-# -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden
-# gcc: -feliminate-unused-debug-types -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common  -fno-plt -fipa-pta
-export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe"
-#
-export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe"
-export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe"
-export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe"
-#
-export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe /usr/lib64/libgbm.so /usr/lib64/libva-drm.so /usr/lib64/libva.so -L/usr/lib64"
-#
-export AR=gcc-ar
-export RANLIB=gcc-ranlib
-export NM=gcc-nm
-export LD_LIBRARY_PATH="/usr/cuda/lib64:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
-export PATH="/usr/cuda/bin:/usr/nvidia/bin:$PATH"
-export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig"
-#export CCACHE_DISABLE=1
-## altflags1 end
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1596975320
+export SOURCE_DATE_EPOCH=1597321149
 rm -rf %{buildroot}
 ## install_prepend content
 # exit 1
