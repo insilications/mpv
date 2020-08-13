@@ -18,7 +18,6 @@ cairo-png
 cairo-ps
 cairo-script
 cairo-svg
-libplacebo
 cairo-xcb
 cairo-xcb-shm
 cairo-xlib

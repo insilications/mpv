@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mpv
-Version  : 20.08.09
+Version  : 0.32.0
 Release  : 20
-URL      : file:///insilications/build/clearlinux/packages/mpv/mpv-20.08.09.zip
-Source0  : file:///insilications/build/clearlinux/packages/mpv/mpv-20.08.09.zip
+URL      : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.zip
+Source0  : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.zip
 Summary  : mpv media player client library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -410,6 +410,8 @@ BuildRequires : zlib-staticdev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+# Ignore missing build ids
+%undefine _missing_build_ids_terminate_build
 # Disable automatic requeriments processing
 AutoReq: no
 
@@ -419,24 +421,48 @@ adding features like automatically freeing sub-trees of memory allocations if
 a parent allocation is freed.
 
 %prep
-%setup -q -n mpv-20.08.09
-cd %{_builddir}/mpv-20.08.09
+%setup -q -n mpv-0.32.0
+cd %{_builddir}/mpv-0.32.0
 
 %build
 unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1597321149
+export SOURCE_DATE_EPOCH=1597324078
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
+## altflags1 content
+export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
+# -ffat-lto-objectsts -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden
+# gcc: -feliminate-unused-debug-types -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common -fno-plt -fipa-pta -fno-semantic-interposition
+export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fipa-pta -ffat-lto-objects -fPIC"
+#
+export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
+export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
+export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
+#
+export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
+#
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export PKG_CONFIG_PATH=/usr/lib64/pkgconfig
+export LD_LIBRARY_PATH="/usr/cuda/lib64:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
+export PATH="/usr/cuda/bin:/usr/nvidia/bin:$PATH"
+#export CCACHE_DISABLE=1
+export DISPLAY=:0.0
+export VDPAU_DRIVER="nvidia"
+export LIBVA_DRIVER_NAME="vdpau"
+export LIBVA_DRIVERS_PATH="/usr/lib64/dri"
+## altflags1 end
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1597321149
+export SOURCE_DATE_EPOCH=1597324078
 rm -rf %{buildroot}
 ## install_prepend content
 # exit 1
