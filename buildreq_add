@@ -3,6 +3,7 @@
 # numactl
 # numactl-dev
 # numactl-staticdev
+# gnutls-staticdev
 alsa-lib-dev
 alsa-lib-lib
 binutils
@@ -50,7 +51,6 @@ gmp-dev
 gmp-staticdev
 gnutls
 gnutls-dev
-gnutls-staticdev
 graphite-dev
 graphite-staticdev
 gsm-dev
