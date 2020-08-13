@@ -15,10 +15,14 @@ BuildRequires : ImageMagick-dev
 BuildRequires : LuaJIT
 BuildRequires : LuaJIT-dev
 BuildRequires : LuaJIT-staticdev
+BuildRequires : SDL2
 BuildRequires : SDL2-dev
+BuildRequires : SDL2-lib
 BuildRequires : Sphinx
 BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
+BuildRequires : acl
+BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : alsa-lib-lib
 BuildRequires : binutils
@@ -32,18 +36,23 @@ BuildRequires : bzip2-dev
 BuildRequires : bzip2-staticdev
 BuildRequires : cairo
 BuildRequires : cairo-dev
+BuildRequires : cairo-lib
 BuildRequires : cuda
 BuildRequires : cuda-dev
 BuildRequires : cuda-staticdev
+BuildRequires : evtest
 BuildRequires : expat-dev
 BuildRequires : expat-staticdev
 BuildRequires : ffmpeg
 BuildRequires : ffmpeg-dev
 BuildRequires : ffmpeg-staticdev
 BuildRequires : findutils
+BuildRequires : fontconfig-data
 BuildRequires : fontconfig-dev
+BuildRequires : fontconfig-lib
 BuildRequires : fontconfig-staticdev
 BuildRequires : freetype-dev
+BuildRequires : freetype-lib
 BuildRequires : freetype-staticdev
 BuildRequires : fribidi-dev
 BuildRequires : fribidi-staticdev
@@ -54,7 +63,10 @@ BuildRequires : gcc9
 BuildRequires : gcc9-dev
 BuildRequires : gcc9-libs-math
 BuildRequires : glib
+BuildRequires : glib-bin
+BuildRequires : glib-data
 BuildRequires : glib-dev
+BuildRequires : glib-lib
 BuildRequires : glib-staticdev
 BuildRequires : glibc
 BuildRequires : glibc-dev
@@ -68,8 +80,13 @@ BuildRequires : graphite-dev
 BuildRequires : graphite-staticdev
 BuildRequires : gsm-dev
 BuildRequires : gsm-staticdev
+BuildRequires : gtk+-data
+BuildRequires : gtk+-lib
+BuildRequires : gtk3-lib
 BuildRequires : harfbuzz-dev
+BuildRequires : harfbuzz-lib
 BuildRequires : harfbuzz-staticdev
+BuildRequires : icu4c-lib
 BuildRequires : ladspa_sdk
 BuildRequires : ladspa_sdk-bin
 BuildRequires : ladspa_sdk-dev
@@ -77,7 +94,20 @@ BuildRequires : ladspa_sdk-lib
 BuildRequires : lcms2
 BuildRequires : lcms2-dev
 BuildRequires : lcms2-staticdev
+BuildRequires : libX11-data
 BuildRequires : libX11-dev
+BuildRequires : libX11-lib
+BuildRequires : libXScrnSaver-lib
+BuildRequires : libXau-lib
+BuildRequires : libXcursor-lib
+BuildRequires : libXdamage-lib
+BuildRequires : libXdmcp-lib
+BuildRequires : libXext-lib
+BuildRequires : libXft-lib
+BuildRequires : libXi-lib
+BuildRequires : libXrender-lib
+BuildRequires : libXtst-lib
+BuildRequires : libXxf86vm-lib
 BuildRequires : libaom-dev
 BuildRequires : libaom-staticdev
 BuildRequires : libarchive
@@ -116,6 +146,9 @@ BuildRequires : libffi-staticdev
 BuildRequires : libidn2
 BuildRequires : libidn2-dev
 BuildRequires : libidn2-staticdev
+BuildRequires : libinput-data
+BuildRequires : libinput-lib
+BuildRequires : libinput-libexec
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libjpeg-turbo-staticdev
 BuildRequires : libmp3lame-dev
@@ -127,6 +160,7 @@ BuildRequires : libplacebo
 BuildRequires : libplacebo-dev
 BuildRequires : libplacebo-staticdev
 BuildRequires : libpng-dev
+BuildRequires : libpng-lib
 BuildRequires : libpng-staticdev
 BuildRequires : libsrt-dev
 BuildRequires : libsrt-staticdev
@@ -160,6 +194,7 @@ BuildRequires : libx265
 BuildRequires : libx265-dev
 BuildRequires : libx265-lib
 BuildRequires : libx265-staticdev
+BuildRequires : libxcb-lib
 BuildRequires : libxml2-dev
 BuildRequires : libxml2-staticdev
 BuildRequires : libxvid
@@ -167,6 +202,11 @@ BuildRequires : libxvid-dev
 BuildRequires : libxvid-staticdev
 BuildRequires : libzimg-dev
 BuildRequires : libzimg-staticdev
+BuildRequires : llvm-lib
+BuildRequires : lz4-dev
+BuildRequires : lzo
+BuildRequires : lzo-dev
+BuildRequires : lzo-staticdev
 BuildRequires : md4c
 BuildRequires : md4c-dev
 BuildRequires : md4c-staticdev
@@ -180,6 +220,7 @@ BuildRequires : nasm-bin
 BuildRequires : nettle
 BuildRequires : nettle-dev
 BuildRequires : nettle-staticdev
+BuildRequires : numlockx
 BuildRequires : nv-codec-headers
 BuildRequires : nv-codec-headers-dev
 BuildRequires : nvidia
@@ -197,10 +238,38 @@ BuildRequires : orc-dev
 BuildRequires : orc-staticdev
 BuildRequires : p11-kit
 BuildRequires : p11-kit-dev
+BuildRequires : pango-lib
 BuildRequires : pcre-dev
 BuildRequires : pcre-staticdev
+BuildRequires : perl
+BuildRequires : perl-Config-General
+BuildRequires : perl-Config-Tiny
+BuildRequires : perl-Crypt-SSLeay
+BuildRequires : perl-DBI
+BuildRequires : perl-DateTime-TimeZone
+BuildRequires : perl-Encode-Locale
+BuildRequires : perl-Error
+BuildRequires : perl-File-Listing
+BuildRequires : perl-HTML-Parser
+BuildRequires : perl-HTML-Tagset
+BuildRequires : perl-HTTP-Cookies
+BuildRequires : perl-HTTP-Date
+BuildRequires : perl-HTTP-Message
+BuildRequires : perl-HTTP-Negotiate
+BuildRequires : perl-IO-HTML
+BuildRequires : perl-LWP-MediaTypes
+BuildRequires : perl-LWP-Protocol-https
+BuildRequires : perl-Params-Validate
+BuildRequires : perl-Test-Simple
+BuildRequires : perl-Try-Tiny
+BuildRequires : perl-URI
+BuildRequires : perl-XML-NamespaceSupport
+BuildRequires : perl-XML-Parser
+BuildRequires : perl-libwww-perl
+BuildRequires : perl-man
 BuildRequires : pixman
 BuildRequires : pixman-dev
+BuildRequires : pixman-lib
 BuildRequires : pixman-staticdev
 BuildRequires : pkg-config
 BuildRequires : pkg-config-dev
@@ -267,6 +336,7 @@ BuildRequires : pkgconfig(haisrt)
 BuildRequires : pkgconfig(hogweed)
 BuildRequires : pkgconfig(lame)
 BuildRequires : pkgconfig(lcms2)
+BuildRequires : pkgconfig(libacl)
 BuildRequires : pkgconfig(libarchive)
 BuildRequires : pkgconfig(libass)
 BuildRequires : pkgconfig(libavcodec)
@@ -292,6 +362,7 @@ BuildRequires : pkgconfig(libffi)
 BuildRequires : pkgconfig(libidn2)
 BuildRequires : pkgconfig(libjpeg)
 BuildRequires : pkgconfig(libkms)
+BuildRequires : pkgconfig(liblz4)
 BuildRequires : pkgconfig(liblzma)
 BuildRequires : pkgconfig(libmfx)
 BuildRequires : pkgconfig(libopenjp2)
@@ -321,7 +392,9 @@ BuildRequires : pkgconfig(libwebpdemux)
 BuildRequires : pkgconfig(libwebpmux)
 BuildRequires : pkgconfig(libxml++-3.0)
 BuildRequires : pkgconfig(libxml-2.0)
+BuildRequires : pkgconfig(libzstd)
 BuildRequires : pkgconfig(luajit)
+BuildRequires : pkgconfig(lzo2)
 BuildRequires : pkgconfig(md4c)
 BuildRequires : pkgconfig(md4c-html)
 BuildRequires : pkgconfig(mm-common-libstdc++)
@@ -382,6 +455,7 @@ BuildRequires : rtmpdump-dev
 BuildRequires : rtmpdump-staticdev
 BuildRequires : rubberband-dev
 BuildRequires : rubberband-staticdev
+BuildRequires : setxkbmap
 BuildRequires : shaderc
 BuildRequires : shaderc-dev
 BuildRequires : shaderc-staticdev
@@ -401,12 +475,48 @@ BuildRequires : util-linux-staticdev
 BuildRequires : vamp-sdk
 BuildRequires : vamp-sdk-dev
 BuildRequires : vamp-sdk-staticdev
+BuildRequires : wayland
+BuildRequires : weston
+BuildRequires : wmctrl
 BuildRequires : xauth
+BuildRequires : xclip
+BuildRequires : xdotool
+BuildRequires : xdpyinfo
+BuildRequires : xf86-input-libinput
+BuildRequires : xf86-video-amdgpu
+BuildRequires : xf86-video-ati
+BuildRequires : xf86-video-fbdev
+BuildRequires : xf86-video-nouveau
+BuildRequires : xf86-video-qxl
+BuildRequires : xf86-video-vboxvideo
+BuildRequires : xf86-video-vesa
+BuildRequires : xf86-video-vmware
+BuildRequires : xfontsel
+BuildRequires : xhost
+BuildRequires : xinit
+BuildRequires : xinput
+BuildRequires : xkbcomp
+BuildRequires : xkeyboard-config
+BuildRequires : xkill
+BuildRequires : xmodmap
+BuildRequires : xorg-server
+BuildRequires : xprop
+BuildRequires : xrandr
+BuildRequires : xrdb
+BuildRequires : xrdp
+BuildRequires : xrestop
+BuildRequires : xsel
+BuildRequires : xset
+BuildRequires : xsetroot
 BuildRequires : xvfb-run
+BuildRequires : xwd
+BuildRequires : xwininfo
 BuildRequires : xz-dev
 BuildRequires : xz-staticdev
 BuildRequires : zlib-dev
 BuildRequires : zlib-staticdev
+BuildRequires : zstd-dev
+BuildRequires : zstd-staticdev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -429,22 +539,22 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1597324078
+export SOURCE_DATE_EPOCH=1597329028
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 ## altflags1 content
-export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
-# -ffat-lto-objectsts -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden
+export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC -I/usr/cuda/include"
+# -ffat-lto-objectsts -fno-PIE -fno-PIE -m64 -no-pie -fPIC -I/usr/cuda/include -fvisibility=hidden
 # gcc: -feliminate-unused-debug-types -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common -fno-plt -fipa-pta -fno-semantic-interposition
-export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fipa-pta -ffat-lto-objects -fPIC"
+export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fipa-pta -ffat-lto-objects -fPIC -I/usr/cuda/include"
 #
-export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
-export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
-export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
+export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC -I/usr/cuda/include"
+export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC -I/usr/cuda/include"
+export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC -I/usr/cuda/include"
 #
-export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC"
+export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fipa-pta -ffat-lto-objects -fPIC -I/usr/cuda/include -L/usr/nvidia/lib64 -L/usr/nvidia/lib -L/usr/nvidia/lib/vdpau -L/usr/lib64/dri -L/usr/cuda/lib64 /usr/cuda/targets/x86_64-linux/lib/libcublasLt_static.a /usr/cuda/targets/x86_64-linux/lib/libcublas_static.a /usr/cuda/targets/x86_64-linux/lib/libcudadevrt.a /usr/cuda/targets/x86_64-linux/lib/libcudart_static.a /usr/cuda/targets/x86_64-linux/lib/libcufft_static.a /usr/cuda/targets/x86_64-linux/lib/libcufft_static_nocallback.a /usr/cuda/targets/x86_64-linux/lib/libcufftw_static.a /usr/cuda/targets/x86_64-linux/lib/libculibos.a /usr/cuda/targets/x86_64-linux/lib/libcurand_static.a /usr/cuda/targets/x86_64-linux/lib/libcusolver_static.a /usr/cuda/targets/x86_64-linux/lib/libcusparse_static.a /usr/cuda/targets/x86_64-linux/lib/liblapack_static.a /usr/cuda/targets/x86_64-linux/lib/libmetis_static.a /usr/cuda/targets/x86_64-linux/lib/libnppc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppial_static.a /usr/cuda/targets/x86_64-linux/lib/libnppicc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppidei_static.a /usr/cuda/targets/x86_64-linux/lib/libnppif_static.a /usr/cuda/targets/x86_64-linux/lib/libnppig_static.a /usr/cuda/targets/x86_64-linux/lib/libnppim_static.a /usr/cuda/targets/x86_64-linux/lib/libnppist_static.a /usr/cuda/targets/x86_64-linux/lib/libnppisu_static.a /usr/cuda/targets/x86_64-linux/lib/libnppitc_static.a /usr/cuda/targets/x86_64-linux/lib/libnpps_static.a /usr/cuda/targets/x86_64-linux/lib/libnvjpeg_static.a /usr/cuda/targets/x86_64-linux/lib/libnppig_static.a /usr/cuda/targets/x86_64-linux/lib/libnppicc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppidei_static.a -Wl,-Bdynamic -L/usr/nvidia/lib -lGL -lEGL -lGLX -lnvcuvid -L/usr/lib64 -pthread -lpthread -lrt -lc -ldl -lgcc -lgcc_s -lstdc++ -lmvec -lm"
 #
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -462,7 +572,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1597324078
+export SOURCE_DATE_EPOCH=1597329028
 rm -rf %{buildroot}
 ## install_prepend content
 # exit 1

@@ -170,3 +170,9 @@ xrandr
 xscrnsaver
 zimg
 zlib
+libacl
+lzo2
+libzstd
+liblz4
+alsa-topology
+alsa

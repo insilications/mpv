@@ -329,3 +329,13 @@ xz-dev
 xz-staticdev
 zlib-dev
 zlib-staticdev
+acl-dev
+acl
+lzo
+lzo-dev
+lzo-staticdev
+zstd-dev
+zstd-staticdev
+lz4-dev
+alsa-lib-dev
+alsa-lib-lib
