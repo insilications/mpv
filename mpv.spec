@@ -279,6 +279,7 @@ BuildRequires : pkgconfig(MagickWand)
 BuildRequires : pkgconfig(SPIRV-Tools)
 BuildRequires : pkgconfig(SPIRV-Tools-shared)
 BuildRequires : pkgconfig(alsa)
+BuildRequires : pkgconfig(alsa-topology)
 BuildRequires : pkgconfig(aom)
 BuildRequires : pkgconfig(atomic_ops)
 BuildRequires : pkgconfig(blkid)
@@ -539,7 +540,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1597329028
+export SOURCE_DATE_EPOCH=1597332069
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -572,7 +573,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1597329028
+export SOURCE_DATE_EPOCH=1597332069
 rm -rf %{buildroot}
 ## install_prepend content
 # exit 1
