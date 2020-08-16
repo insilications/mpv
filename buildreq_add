@@ -205,6 +205,7 @@ numlockx
 nv-codec-headers
 nv-codec-headers-dev
 nvidia
+nvidia-lib
 nvidia-dev
 opencl-headers
 opencl-headers-dev
