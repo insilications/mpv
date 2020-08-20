@@ -12,6 +12,9 @@ binutils-staticdev
 brotli
 brotli-dev
 brotli-staticdev
+libepoxy
+libepoxy-dev
+libepoxy-staticdev
 bzip2
 bzip2-dev
 bzip2-staticdev
