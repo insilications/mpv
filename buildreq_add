@@ -4,6 +4,8 @@
 # numactl-dev
 # numactl-staticdev
 # gnutls-staticdev
+acl
+acl-dev
 alsa-lib-dev
 alsa-lib-lib
 binutils
@@ -12,9 +14,6 @@ binutils-staticdev
 brotli
 brotli-dev
 brotli-staticdev
-libepoxy
-libepoxy-dev
-libepoxy-staticdev
 bzip2
 bzip2-dev
 bzip2-staticdev
@@ -22,6 +21,9 @@ cairo
 cairo-dev
 cairo-lib
 cuda
+libsamplerate
+libsamplerate-dev
+libsamplerate-staticdev
 cuda-dev
 cuda-staticdev
 evtest
@@ -107,6 +109,9 @@ libdvdnav-staticdev
 libdvdread
 libdvdread-dev
 libdvdread-staticdev
+libepoxy
+libepoxy-dev
+libepoxy-staticdev
 libfdk_aac-dev
 libfdk_aac-staticdev
 libffado
@@ -191,6 +196,10 @@ llvm-lib
 LuaJIT
 LuaJIT-dev
 LuaJIT-staticdev
+lz4-dev
+lzo
+lzo-dev
+lzo-staticdev
 md4c
 md4c-dev
 md4c-staticdev
@@ -208,8 +217,8 @@ numlockx
 nv-codec-headers
 nv-codec-headers-dev
 nvidia
-nvidia-lib
 nvidia-dev
+nvidia-lib
 opencl-headers
 opencl-headers-dev
 openjpeg-dev
@@ -333,13 +342,5 @@ xz-dev
 xz-staticdev
 zlib-dev
 zlib-staticdev
-acl-dev
-acl
-lzo
-lzo-dev
-lzo-staticdev
 zstd-dev
 zstd-staticdev
-lz4-dev
-alsa-lib-dev
-alsa-lib-lib

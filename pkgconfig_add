@@ -2,6 +2,7 @@
 # not get picked up automatically. One name per line, no whitespace.
 # numa
 alsa
+alsa-topology
 aom
 atomic_ops
 blkid
@@ -36,6 +37,7 @@ expat
 fdisk
 fdk-aac
 ffnvcodec
+fftw3
 fontconfig
 freetype2
 fribidi
@@ -59,6 +61,7 @@ haisrt
 hogweed
 lame
 lcms2
+libacl
 libarchive
 libass
 libavcodec
@@ -84,6 +87,7 @@ libffi
 libidn2
 libjpeg
 libkms
+liblz4
 liblzma
 libmfx
 libopenjp2
@@ -113,7 +117,9 @@ libwebpdemux
 libwebpmux
 libxml-2.0
 libxml++-3.0
+libzstd
 luajit
+lzo2
 Magick++
 MagickCore
 MagickWand
@@ -133,11 +139,13 @@ python-3.8
 python-3.8-embed
 readline
 rubberband
+samplerate
 sdl2
 shaderc
 shaderc_combined
 shaderc_static
 smartcols
+sndfile
 speex
 SPIRV-Tools
 SPIRV-Tools-shared
@@ -148,6 +156,7 @@ uuid
 vamp
 vamp-hostsdk
 vamp-sdk
+vamp-sdk)
 vapoursynth
 vapoursynth-script
 vdpau
@@ -170,9 +179,3 @@ xrandr
 xscrnsaver
 zimg
 zlib
-libacl
-lzo2
-libzstd
-liblz4
-alsa-topology
-alsa
