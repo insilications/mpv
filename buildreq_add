@@ -280,6 +280,7 @@ pixman-lib
 pixman-staticdev
 pkg-config
 pkg-config-dev
+pulseaudio
 pulseaudio-dev
 python3-core
 python3-dev
