@@ -6,7 +6,12 @@ alsa-topology
 aom
 atomic_ops
 blkid
+vorbis
+vorbisenc
+vorbisfile
 bzip2
+flac++
+flac
 cairo
 cairo-egl
 cairo-fc
@@ -140,6 +145,7 @@ python-3.8-embed
 readline
 rubberband
 samplerate
+sndfile
 sdl2
 shaderc
 shaderc_combined
@@ -156,7 +162,6 @@ uuid
 vamp
 vamp-hostsdk
 vamp-sdk
-vamp-sdk)
 vapoursynth
 vapoursynth-script
 vdpau

@@ -11,6 +11,8 @@ Source0  : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.zip
 Summary  : mpv media player client library
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: mpv-bin = %{version}-%{release}
+Requires: mpv-data = %{version}-%{release}
 BuildRequires : ImageMagick-dev
 BuildRequires : LuaJIT
 BuildRequires : LuaJIT-dev
@@ -165,6 +167,9 @@ BuildRequires : libplacebo-staticdev
 BuildRequires : libpng-dev
 BuildRequires : libpng-lib
 BuildRequires : libpng-staticdev
+BuildRequires : libsamplerate
+BuildRequires : libsamplerate-dev
+BuildRequires : libsamplerate-staticdev
 BuildRequires : libsrt-dev
 BuildRequires : libsrt-staticdev
 BuildRequires : libtasn1-dev
@@ -318,6 +323,7 @@ BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(fdisk)
 BuildRequires : pkgconfig(fdk-aac)
 BuildRequires : pkgconfig(ffnvcodec)
+BuildRequires : pkgconfig(fftw3)
 BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(freetype2)
 BuildRequires : pkgconfig(fribidi)
@@ -416,11 +422,13 @@ BuildRequires : pkgconfig(python-3.8)
 BuildRequires : pkgconfig(python-3.8-embed)
 BuildRequires : pkgconfig(readline)
 BuildRequires : pkgconfig(rubberband)
+BuildRequires : pkgconfig(samplerate)
 BuildRequires : pkgconfig(sdl2)
 BuildRequires : pkgconfig(shaderc)
 BuildRequires : pkgconfig(shaderc_combined)
 BuildRequires : pkgconfig(shaderc_static)
 BuildRequires : pkgconfig(smartcols)
+BuildRequires : pkgconfig(sndfile)
 BuildRequires : pkgconfig(speex)
 BuildRequires : pkgconfig(srt)
 BuildRequires : pkgconfig(theora)
@@ -535,6 +543,52 @@ TA ("Tree Allocator") is a wrapper around malloc() and related functions,
 adding features like automatically freeing sub-trees of memory allocations if
 a parent allocation is freed.
 
+%package bin
+Summary: bin components for the mpv package.
+Group: Binaries
+Requires: mpv-data = %{version}-%{release}
+
+%description bin
+bin components for the mpv package.
+
+
+%package data
+Summary: data components for the mpv package.
+Group: Data
+
+%description data
+data components for the mpv package.
+
+
+%package dev
+Summary: dev components for the mpv package.
+Group: Development
+Requires: mpv-bin = %{version}-%{release}
+Requires: mpv-data = %{version}-%{release}
+Provides: mpv-devel = %{version}-%{release}
+Requires: mpv = %{version}-%{release}
+
+%description dev
+dev components for the mpv package.
+
+
+%package doc
+Summary: doc components for the mpv package.
+Group: Documentation
+
+%description doc
+doc components for the mpv package.
+
+
+%package staticdev
+Summary: staticdev components for the mpv package.
+Group: Default
+Requires: mpv-dev = %{version}-%{release}
+
+%description staticdev
+staticdev components for the mpv package.
+
+
 %prep
 %setup -q -n mpv-0.32.0
 cd %{_builddir}/mpv-0.32.0
@@ -544,7 +598,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1597915201
+export SOURCE_DATE_EPOCH=1597917678
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -559,7 +613,7 @@ export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl
 export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC"
 export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC"
 #
-export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -Wl,-Bstatic /usr/cuda/targets/x86_64-linux/lib/libcublasLt_static.a /usr/cuda/targets/x86_64-linux/lib/libcublas_static.a /usr/cuda/targets/x86_64-linux/lib/libcudadevrt.a /usr/cuda/targets/x86_64-linux/lib/libcudart_static.a /usr/cuda/targets/x86_64-linux/lib/libcufft_static.a /usr/cuda/targets/x86_64-linux/lib/libcufft_static_nocallback.a /usr/cuda/targets/x86_64-linux/lib/libcufftw_static.a /usr/cuda/targets/x86_64-linux/lib/libculibos.a /usr/cuda/targets/x86_64-linux/lib/libcurand_static.a /usr/cuda/targets/x86_64-linux/lib/libcusolver_static.a /usr/cuda/targets/x86_64-linux/lib/libcusparse_static.a /usr/cuda/targets/x86_64-linux/lib/liblapack_static.a /usr/cuda/targets/x86_64-linux/lib/libmetis_static.a /usr/cuda/targets/x86_64-linux/lib/libnppc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppial_static.a /usr/cuda/targets/x86_64-linux/lib/libnppicc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppidei_static.a /usr/cuda/targets/x86_64-linux/lib/libnppif_static.a /usr/cuda/targets/x86_64-linux/lib/libnppig_static.a /usr/cuda/targets/x86_64-linux/lib/libnppim_static.a /usr/cuda/targets/x86_64-linux/lib/libnppist_static.a /usr/cuda/targets/x86_64-linux/lib/libnppisu_static.a /usr/cuda/targets/x86_64-linux/lib/libnppitc_static.a /usr/cuda/targets/x86_64-linux/lib/libnpps_static.a /usr/cuda/targets/x86_64-linux/lib/libnvjpeg_static.a -Wl,-Bdynamic -L/usr/lib64 -pthread -lpthread -lrt -lc -ldl -lgcc -lgcc_s -lstdc++ -lmvec -lm -L/usr/nvidia/lib -lGL -lEGL -lGLX -lnvcuvid"
+export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -Wl,-Bstatic /usr/cuda/targets/x86_64-linux/lib/libcublasLt_static.a /usr/cuda/targets/x86_64-linux/lib/libcublas_static.a /usr/cuda/targets/x86_64-linux/lib/libcudadevrt.a /usr/cuda/targets/x86_64-linux/lib/libcudart_static.a /usr/cuda/targets/x86_64-linux/lib/libcufft_static_nocallback.a /usr/cuda/targets/x86_64-linux/lib/libcufftw_static.a /usr/cuda/targets/x86_64-linux/lib/libculibos.a /usr/cuda/targets/x86_64-linux/lib/libcurand_static.a /usr/cuda/targets/x86_64-linux/lib/libcusolver_static.a /usr/cuda/targets/x86_64-linux/lib/libcusparse_static.a /usr/cuda/targets/x86_64-linux/lib/liblapack_static.a /usr/cuda/targets/x86_64-linux/lib/libmetis_static.a /usr/cuda/targets/x86_64-linux/lib/libnppc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppial_static.a /usr/cuda/targets/x86_64-linux/lib/libnppicc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppidei_static.a /usr/cuda/targets/x86_64-linux/lib/libnppif_static.a /usr/cuda/targets/x86_64-linux/lib/libnppig_static.a /usr/cuda/targets/x86_64-linux/lib/libnppim_static.a /usr/cuda/targets/x86_64-linux/lib/libnppist_static.a /usr/cuda/targets/x86_64-linux/lib/libnppisu_static.a /usr/cuda/targets/x86_64-linux/lib/libnppitc_static.a /usr/cuda/targets/x86_64-linux/lib/libnpps_static.a /usr/cuda/targets/x86_64-linux/lib/libnvjpeg_static.a /usr/lib64/libsamplerate.a -Wl,-Bdynamic -L/usr/lib64 -pthread -lpthread -lrt -lc -ldl -lgcc -lgcc_s -lstdc++ -lmvec -lm -L/usr/nvidia/lib -lGL -lEGL -lGLX -lnvcuvid"
 #
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -572,12 +626,13 @@ export VDPAU_DRIVER="nvidia"
 export LIBVA_DRIVER_NAME="vdpau"
 export LIBVA_DRIVERS_PATH="/usr/lib64/dri"
 # /usr/lib64/libavcodec.a /usr/lib64/libavdevice.a /usr/lib64/libavfilter.a /usr/lib64/libavformat.a /usr/lib64/libavutil.a /usr/lib64/libpostproc.a /usr/lib64/libswresample.a /usr/lib64/libswscale.a
+#  /usr/cuda/targets/x86_64-linux/lib/libcufft_static.a
 ## altflags1 end
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1597915201
+export SOURCE_DATE_EPOCH=1597917678
 rm -rf %{buildroot}
 ## install_prepend content
 
@@ -586,3 +641,36 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/mpv
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/applications/mpv.desktop
+/usr/share/bash-completion/completions/mpv
+/usr/share/icons/hicolor/128x128/apps/mpv.png
+/usr/share/icons/hicolor/16x16/apps/mpv.png
+/usr/share/icons/hicolor/32x32/apps/mpv.png
+/usr/share/icons/hicolor/64x64/apps/mpv.png
+/usr/share/icons/hicolor/scalable/apps/mpv.svg
+/usr/share/icons/hicolor/symbolic/apps/mpv-symbolic.svg
+/usr/share/zsh/site-functions/_mpv
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/mpv/client.h
+/usr/include/mpv/opengl_cb.h
+/usr/include/mpv/render.h
+/usr/include/mpv/render_gl.h
+/usr/include/mpv/stream_cb.h
+/usr/lib64/pkgconfig/mpv.pc
+
+%files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/doc/mpv/*
+
+%files staticdev
+%defattr(-,root,root,-)
+/usr/lib64/libmpv.a

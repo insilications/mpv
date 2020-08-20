@@ -130,6 +130,7 @@ libjpeg-turbo-staticdev
 libmp3lame-dev
 libmp3lame-lib
 libmp3lame-staticdev
+libogg
 libogg-dev
 libogg-staticdev
 libplacebo
@@ -148,6 +149,9 @@ libunistring-dev
 libunistring-staticdev
 libva
 libva-dev
+libsndfile
+libsndfile-dev
+libsndfile-staticdev
 libva-lib
 libvapoursynth
 libvapoursynth-dev
@@ -158,6 +162,10 @@ libvdpau
 libvdpau-dev
 libvidstab-dev
 libvidstab-staticdev
+flac
+flac-dev
+flac-staticdev
+libvorbis
 libvorbis-dev
 libvorbis-staticdev
 libvpx-dev
@@ -196,7 +204,9 @@ llvm-lib
 LuaJIT
 LuaJIT-dev
 LuaJIT-staticdev
+lz4
 lz4-dev
+lz4-staticdev
 lzo
 lzo-dev
 lzo-staticdev
@@ -229,6 +239,9 @@ openssl-staticdev
 opus-dev
 opus-staticdev
 orc-dev
+acl
+acl-dev
+acl-staticdev
 orc-staticdev
 p11-kit
 p11-kit-dev
