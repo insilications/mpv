@@ -11,6 +11,8 @@ Source0  : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.zip
 Summary  : mpv media player client library
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: mpv-bin = %{version}-%{release}
+Requires: mpv-data = %{version}-%{release}
 BuildRequires : ImageMagick-dev
 BuildRequires : LuaJIT
 BuildRequires : LuaJIT-dev
@@ -472,6 +474,7 @@ BuildRequires : pkgconfig(xrandr)
 BuildRequires : pkgconfig(xscrnsaver)
 BuildRequires : pkgconfig(zimg)
 BuildRequires : pkgconfig(zlib)
+BuildRequires : pulseaudio
 BuildRequires : pulseaudio-dev
 BuildRequires : python3-core
 BuildRequires : python3-dev
@@ -556,6 +559,52 @@ TA ("Tree Allocator") is a wrapper around malloc() and related functions,
 adding features like automatically freeing sub-trees of memory allocations if
 a parent allocation is freed.
 
+%package bin
+Summary: bin components for the mpv package.
+Group: Binaries
+Requires: mpv-data = %{version}-%{release}
+
+%description bin
+bin components for the mpv package.
+
+
+%package data
+Summary: data components for the mpv package.
+Group: Data
+
+%description data
+data components for the mpv package.
+
+
+%package dev
+Summary: dev components for the mpv package.
+Group: Development
+Requires: mpv-bin = %{version}-%{release}
+Requires: mpv-data = %{version}-%{release}
+Provides: mpv-devel = %{version}-%{release}
+Requires: mpv = %{version}-%{release}
+
+%description dev
+dev components for the mpv package.
+
+
+%package doc
+Summary: doc components for the mpv package.
+Group: Documentation
+
+%description doc
+doc components for the mpv package.
+
+
+%package staticdev
+Summary: staticdev components for the mpv package.
+Group: Default
+Requires: mpv-dev = %{version}-%{release}
+
+%description staticdev
+staticdev components for the mpv package.
+
+
 %prep
 %setup -q -n mpv-0.32.0
 cd %{_builddir}/mpv-0.32.0
@@ -565,7 +614,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1597932922
+export SOURCE_DATE_EPOCH=1597957745
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -599,7 +648,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1597932922
+export SOURCE_DATE_EPOCH=1597957745
 rm -rf %{buildroot}
 ## install_prepend content
 
@@ -608,3 +657,36 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/mpv
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/applications/mpv.desktop
+/usr/share/bash-completion/completions/mpv
+/usr/share/icons/hicolor/128x128/apps/mpv.png
+/usr/share/icons/hicolor/16x16/apps/mpv.png
+/usr/share/icons/hicolor/32x32/apps/mpv.png
+/usr/share/icons/hicolor/64x64/apps/mpv.png
+/usr/share/icons/hicolor/scalable/apps/mpv.svg
+/usr/share/icons/hicolor/symbolic/apps/mpv-symbolic.svg
+/usr/share/zsh/site-functions/_mpv
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/mpv/client.h
+/usr/include/mpv/opengl_cb.h
+/usr/include/mpv/render.h
+/usr/include/mpv/render_gl.h
+/usr/include/mpv/stream_cb.h
+/usr/lib64/pkgconfig/mpv.pc
+
+%files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/doc/mpv/*
+
+%files staticdev
+%defattr(-,root,root,-)
+/usr/lib64/libmpv.a
