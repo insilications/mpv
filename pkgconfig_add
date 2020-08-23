@@ -143,7 +143,10 @@ readline
 rubberband
 samplerate
 sdl2
+libunwind-generic
+dbus-1
 shaderc
+libunwind
 shaderc_combined
 shaderc_static
 smartcols

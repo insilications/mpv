@@ -293,7 +293,10 @@ rubberband-dev
 rubberband-staticdev
 SDL2
 SDL2-dev
-SDL2-lib
+dbus-dev
+libunwind
+libunwind-dev
+SDL2-staticdev
 setxkbmap
 shaderc
 shaderc-dev
