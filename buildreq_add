@@ -12,7 +12,14 @@ binutils
 binutils-dev
 binutils-staticdev
 brotli
+pulseaudio-dev
+pulseaudio
 brotli-dev
+systemd-dev
+systemd
+alsa-tools
+libXScrnSaver
+libXScrnSaver-dev
 brotli-staticdev
 bzip2
 bzip2-dev

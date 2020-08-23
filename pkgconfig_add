@@ -15,6 +15,7 @@ flac
 cairo
 cairo-egl
 cairo-fc
+xscrnsaver
 cairo-ft
 cairo-gl
 cairo-glx
