@@ -6,16 +6,10 @@ alsa-topology
 aom
 atomic_ops
 blkid
-vorbis
-vorbisenc
-vorbisfile
 bzip2
-flac++
-flac
 cairo
 cairo-egl
 cairo-fc
-xscrnsaver
 cairo-ft
 cairo-gl
 cairo-glx
@@ -44,6 +38,8 @@ fdisk
 fdk-aac
 ffnvcodec
 fftw3
+flac
+flac++
 fontconfig
 freetype2
 fribidi
@@ -146,7 +142,6 @@ python-3.8-embed
 readline
 rubberband
 samplerate
-sndfile
 sdl2
 shaderc
 shaderc_combined
@@ -168,6 +163,8 @@ vapoursynth-script
 vdpau
 vidstab
 vorbis
+vorbisenc
+vorbisfile
 vpx
 vulkan
 wayland-client

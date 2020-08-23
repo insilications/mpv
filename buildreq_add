@@ -6,20 +6,15 @@
 # gnutls-staticdev
 acl
 acl-dev
+acl-staticdev
 alsa-lib-dev
 alsa-lib-lib
+alsa-tools
 binutils
 binutils-dev
 binutils-staticdev
 brotli
-pulseaudio-dev
-pulseaudio
 brotli-dev
-systemd-dev
-systemd
-alsa-tools
-libXScrnSaver
-libXScrnSaver-dev
 brotli-staticdev
 bzip2
 bzip2-dev
@@ -28,9 +23,6 @@ cairo
 cairo-dev
 cairo-lib
 cuda
-libsamplerate
-libsamplerate-dev
-libsamplerate-staticdev
 cuda-dev
 cuda-staticdev
 evtest
@@ -40,6 +32,9 @@ ffmpeg
 ffmpeg-dev
 ffmpeg-staticdev
 findutils
+flac
+flac-dev
+flac-staticdev
 fontconfig-data
 fontconfig-dev
 fontconfig-lib
@@ -146,6 +141,12 @@ libplacebo-staticdev
 libpng-dev
 libpng-lib
 libpng-staticdev
+libsamplerate
+libsamplerate-dev
+libsamplerate-staticdev
+libsndfile
+libsndfile-dev
+libsndfile-staticdev
 libsrt-dev
 libsrt-staticdev
 libtasn1-dev
@@ -156,9 +157,6 @@ libunistring-dev
 libunistring-staticdev
 libva
 libva-dev
-libsndfile
-libsndfile-dev
-libsndfile-staticdev
 libva-lib
 libvapoursynth
 libvapoursynth-dev
@@ -169,9 +167,6 @@ libvdpau
 libvdpau-dev
 libvidstab-dev
 libvidstab-staticdev
-flac
-flac-dev
-flac-staticdev
 libvorbis
 libvorbis-dev
 libvorbis-staticdev
@@ -199,6 +194,8 @@ libXi-lib
 libxml2-dev
 libxml2-staticdev
 libXrender-lib
+libXScrnSaver
+libXScrnSaver-dev
 libXScrnSaver-lib
 libXtst-lib
 libxvid
@@ -246,9 +243,6 @@ openssl-staticdev
 opus-dev
 opus-staticdev
 orc-dev
-acl
-acl-dev
-acl-staticdev
 orc-staticdev
 p11-kit
 p11-kit-dev
@@ -311,6 +305,8 @@ speexdsp-dev
 speexdsp-staticdev
 speex-staticdev
 Sphinx
+systemd
+systemd-dev
 texinfo
 uchardet
 uchardet-dev
