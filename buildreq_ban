@@ -4,3 +4,4 @@ SPIRV-Tools-dev
 SPIRV-Headers-dev
 glslang-dev
 glslang-staticdev
+SDL2-staticdev

@@ -25,6 +25,7 @@ cairo-xlib
 cairo-xlib-xcb
 cairo-xlib-xrender
 dav1d
+dbus-1
 dbus-c++-1
 dbus-c++-ecore-1
 dbus-c++-glib-1
@@ -108,6 +109,8 @@ libswresample
 libswscale
 libtasn1
 libturbojpeg
+libunwind
+libunwind-generic
 libva
 libva-drm
 libva-glx
@@ -143,10 +146,7 @@ readline
 rubberband
 samplerate
 sdl2
-libunwind-generic
-dbus-1
 shaderc
-libunwind
 shaderc_combined
 shaderc_static
 smartcols

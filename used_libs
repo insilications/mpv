@@ -14,10 +14,8 @@ libgnutls.so.30
 libgomp.so.1
 libm.so.6
 libmfx.so.1
-libp11-kit.so.0
 libpthread.so.0
 libpulse.so.0
-libpulsecommon-13.0.so
 librt.so.1
 libstdc++.so.6
 libva-drm.so.2

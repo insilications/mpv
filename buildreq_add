@@ -25,6 +25,7 @@ cairo-lib
 cuda
 cuda-dev
 cuda-staticdev
+dbus-dev
 evtest
 expat-dev
 expat-staticdev
@@ -155,6 +156,8 @@ libtheora-dev
 libtheora-staticdev
 libunistring-dev
 libunistring-staticdev
+libunwind
+libunwind-dev
 libva
 libva-dev
 libva-lib
@@ -293,10 +296,6 @@ rubberband-dev
 rubberband-staticdev
 SDL2
 SDL2-dev
-dbus-dev
-libunwind
-libunwind-dev
-SDL2-staticdev
 setxkbmap
 shaderc
 shaderc-dev
