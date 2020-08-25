@@ -158,6 +158,7 @@ libunistring-dev
 libunistring-staticdev
 libunwind
 libunwind-dev
+libunwind-staticdev
 libva
 libva-dev
 libva-lib
