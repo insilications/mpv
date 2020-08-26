@@ -5,14 +5,12 @@
 %define keepstatic 1
 Name     : mpv
 Version  : 0.32.0
-Release  : 22
-URL      : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.zip
-Source0  : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.zip
+Release  : 23
+URL      : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.tar.gz
+Source0  : file:///insilications/build/clearlinux/packages/mpv/mpv-0.32.0.tar.gz
 Summary  : mpv media player client library
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: mpv-bin = %{version}-%{release}
-Requires: mpv-data = %{version}-%{release}
 BuildRequires : ImageMagick-dev
 BuildRequires : LuaJIT
 BuildRequires : LuaJIT-dev
@@ -40,6 +38,7 @@ BuildRequires : bzip2-staticdev
 BuildRequires : cairo
 BuildRequires : cairo-dev
 BuildRequires : cairo-lib
+BuildRequires : ccache
 BuildRequires : cuda
 BuildRequires : cuda-dev
 BuildRequires : cuda-staticdev
@@ -191,6 +190,9 @@ BuildRequires : libunistring-dev
 BuildRequires : libunistring-staticdev
 BuildRequires : libunwind
 BuildRequires : libunwind-dev
+BuildRequires : libunwind-dev32
+BuildRequires : libunwind-staticdev
+BuildRequires : libunwind-staticdev32
 BuildRequires : libva
 BuildRequires : libva-dev
 BuildRequires : libva-lib
@@ -332,6 +334,7 @@ BuildRequires : pkgconfig(dbus-c++-1)
 BuildRequires : pkgconfig(dbus-c++-ecore-1)
 BuildRequires : pkgconfig(dbus-c++-glib-1)
 BuildRequires : pkgconfig(dri)
+BuildRequires : pkgconfig(dri2proto)
 BuildRequires : pkgconfig(dvdnav)
 BuildRequires : pkgconfig(dvdread)
 BuildRequires : pkgconfig(egl)
@@ -411,8 +414,12 @@ BuildRequires : pkgconfig(libswresample)
 BuildRequires : pkgconfig(libswscale)
 BuildRequires : pkgconfig(libtasn1)
 BuildRequires : pkgconfig(libturbojpeg)
+BuildRequires : pkgconfig(libunistring)
 BuildRequires : pkgconfig(libunwind)
+BuildRequires : pkgconfig(libunwind-coredump)
 BuildRequires : pkgconfig(libunwind-generic)
+BuildRequires : pkgconfig(libunwind-ptrace)
+BuildRequires : pkgconfig(libunwind-setjmp)
 BuildRequires : pkgconfig(libva)
 BuildRequires : pkgconfig(libva-drm)
 BuildRequires : pkgconfig(libva-glx)
@@ -569,77 +576,31 @@ TA ("Tree Allocator") is a wrapper around malloc() and related functions,
 adding features like automatically freeing sub-trees of memory allocations if
 a parent allocation is freed.
 
-%package bin
-Summary: bin components for the mpv package.
-Group: Binaries
-Requires: mpv-data = %{version}-%{release}
-
-%description bin
-bin components for the mpv package.
-
-
-%package data
-Summary: data components for the mpv package.
-Group: Data
-
-%description data
-data components for the mpv package.
-
-
-%package dev
-Summary: dev components for the mpv package.
-Group: Development
-Requires: mpv-bin = %{version}-%{release}
-Requires: mpv-data = %{version}-%{release}
-Provides: mpv-devel = %{version}-%{release}
-Requires: mpv = %{version}-%{release}
-
-%description dev
-dev components for the mpv package.
-
-
-%package doc
-Summary: doc components for the mpv package.
-Group: Documentation
-
-%description doc
-doc components for the mpv package.
-
-
-%package staticdev
-Summary: staticdev components for the mpv package.
-Group: Default
-Requires: mpv-dev = %{version}-%{release}
-
-%description staticdev
-staticdev components for the mpv package.
-
-
 %prep
-%setup -q -n mpv-0.32.0
-cd %{_builddir}/mpv-0.32.0
+%setup -q -n clone_archive
+cd %{_builddir}/clone_archive
 
 %build
 unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598385474
+export SOURCE_DATE_EPOCH=1598468099
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 ## altflags1 content
-export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC"
-# -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none
+export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -fPIC"
+# -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none
 # gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common
-export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fPIC"
+export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fPIC -fPIC"
 #
-export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC"
-export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC"
-export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC"
+export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -fPIC"
+export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -fPIC"
+export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -fPIC"
 #
-export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -Wl,-Bstatic /usr/cuda/targets/x86_64-linux/lib/libcublasLt_static.a /usr/cuda/targets/x86_64-linux/lib/libcublas_static.a /usr/cuda/targets/x86_64-linux/lib/libcudadevrt.a /usr/cuda/targets/x86_64-linux/lib/libcudart_static.a /usr/cuda/targets/x86_64-linux/lib/libcufft_static_nocallback.a /usr/cuda/targets/x86_64-linux/lib/libcufftw_static.a /usr/cuda/targets/x86_64-linux/lib/libculibos.a /usr/cuda/targets/x86_64-linux/lib/libcurand_static.a /usr/cuda/targets/x86_64-linux/lib/libcusolver_static.a /usr/cuda/targets/x86_64-linux/lib/libcusparse_static.a /usr/cuda/targets/x86_64-linux/lib/liblapack_static.a /usr/cuda/targets/x86_64-linux/lib/libmetis_static.a /usr/cuda/targets/x86_64-linux/lib/libnppc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppial_static.a /usr/cuda/targets/x86_64-linux/lib/libnppicc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppidei_static.a /usr/cuda/targets/x86_64-linux/lib/libnppif_static.a /usr/cuda/targets/x86_64-linux/lib/libnppig_static.a /usr/cuda/targets/x86_64-linux/lib/libnppim_static.a /usr/cuda/targets/x86_64-linux/lib/libnppist_static.a /usr/cuda/targets/x86_64-linux/lib/libnppisu_static.a /usr/cuda/targets/x86_64-linux/lib/libnppitc_static.a /usr/cuda/targets/x86_64-linux/lib/libnpps_static.a /usr/cuda/targets/x86_64-linux/lib/libnvjpeg_static.a /usr/lib64/libsamplerate.a /usr/lib64/libFLAC.a /usr/lib64/libvorbis.a /usr/lib64/libspeex.a /usr/lib64/libopus.a /usr/lib64/libvorbisenc.a /usr/lib64/libvorbisfile.a /usr/lib64/libogg.a /usr/lib64/libsndfile.a -Wl,-Bdynamic -L/usr/lib64 -pthread -lpthread -lrt -lc -ldl -lgcc -lgcc_s -lstdc++ -lmvec -lm -L/usr/nvidia/lib -lGL -lEGL -lGLX -lnvcuvid /usr/nvidia/lib/libGLdispatch.so.0"
+export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fPIC -fPIC -Wl,-Bstatic /usr/cuda/targets/x86_64-linux/lib/libcublasLt_static.a /usr/cuda/targets/x86_64-linux/lib/libcublas_static.a /usr/cuda/targets/x86_64-linux/lib/libcudadevrt.a /usr/cuda/targets/x86_64-linux/lib/libcudart_static.a /usr/cuda/targets/x86_64-linux/lib/libcufft_static_nocallback.a /usr/cuda/targets/x86_64-linux/lib/libcufftw_static.a /usr/cuda/targets/x86_64-linux/lib/libculibos.a /usr/cuda/targets/x86_64-linux/lib/libcurand_static.a /usr/cuda/targets/x86_64-linux/lib/libcusolver_static.a /usr/cuda/targets/x86_64-linux/lib/libcusparse_static.a /usr/cuda/targets/x86_64-linux/lib/liblapack_static.a /usr/cuda/targets/x86_64-linux/lib/libmetis_static.a /usr/cuda/targets/x86_64-linux/lib/libnppc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppial_static.a /usr/cuda/targets/x86_64-linux/lib/libnppicc_static.a /usr/cuda/targets/x86_64-linux/lib/libnppidei_static.a /usr/cuda/targets/x86_64-linux/lib/libnppif_static.a /usr/cuda/targets/x86_64-linux/lib/libnppig_static.a /usr/cuda/targets/x86_64-linux/lib/libnppim_static.a /usr/cuda/targets/x86_64-linux/lib/libnppist_static.a /usr/cuda/targets/x86_64-linux/lib/libnppisu_static.a /usr/cuda/targets/x86_64-linux/lib/libnppitc_static.a /usr/cuda/targets/x86_64-linux/lib/libnpps_static.a /usr/cuda/targets/x86_64-linux/lib/libnvjpeg_static.a /usr/lib64/libsamplerate.a /usr/lib64/libFLAC.a /usr/lib64/libvorbis.a /usr/lib64/libspeex.a /usr/lib64/libopus.a /usr/lib64/libvorbisenc.a /usr/lib64/libvorbisfile.a /usr/lib64/libogg.a /usr/lib64/libsndfile.a -L/usr/lib64 -Wl,-Bdynamic -pthread -lpthread -lrt -lc -ldl -lgcc -lgcc_s -lstdc++ -lmvec -lm -L/usr/nvidia/lib -lGL -lEGL -lGLX -lnvcuvid /usr/nvidia/lib/libGLdispatch.so.0 -L/usr/lib64"
 #
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -648,9 +609,11 @@ export NM=gcc-nm
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export LD_LIBRARY_PATH="/usr/cuda/lib64:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
-export PATH="/usr/cuda/bin:/usr/nvidia/bin:$PATH"
-#export CCACHE_DISABLE=1
+export LD_LIBRARY_PATH="/usr/cuda/lib64:/usr/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
+export PATH="/usr/cuda/bin:/usr/nvidia/bin:/usr/lib64/ccache/bin:$PATH"
+export CCACHE_NOHASHDIR=1
+export CCACHE_DIRECT=1
+export CCACHE_SLOPPINESS=pch_defines,locale,time_macros
 export DISPLAY=:0
 #export XDG_CONFIG_DIRS=/usr/share/xdg:/etc/xdg
 #export XDG_SEAT=seat0
@@ -669,50 +632,21 @@ export LIBVA_DRIVERS_PATH="/usr/lib64/dri"
 # /usr/lib64/libavcodec.a /usr/lib64/libavdevice.a /usr/lib64/libavfilter.a /usr/lib64/libavformat.a /usr/lib64/libavutil.a /usr/lib64/libpostproc.a /usr/lib64/libswresample.a /usr/lib64/libswscale.a
 # /usr/cuda/targets/x86_64-linux/lib/libcufft_static.a
 #  -Wl,--whole-archive /usr/lib64/libsamplerate.a /usr/lib64/libFLAC.a /usr/lib64/libvorbis.a /usr/lib64/libspeex.a /usr/lib64/libopus.a /usr/lib64/libvorbisenc.a /usr/lib64/libvorbisfile.a /usr/lib64/libogg.a /usr/lib64/libsndfile.a -Wl,--no-whole-archive
+#  /usr/nvidia/lib/libGLdispatch.so.0
 ## altflags1 end
+## make_prepend content
+
+## make_prepend end
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1598385474
+export SOURCE_DATE_EPOCH=1598468099
 rm -rf %{buildroot}
 ## install_prepend content
-
+exit 1
 ## install_prepend end
 %make_install
 
 %files
 %defattr(-,root,root,-)
-
-%files bin
-%defattr(-,root,root,-)
-/usr/bin/mpv
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/applications/mpv.desktop
-/usr/share/bash-completion/completions/mpv
-/usr/share/icons/hicolor/128x128/apps/mpv.png
-/usr/share/icons/hicolor/16x16/apps/mpv.png
-/usr/share/icons/hicolor/32x32/apps/mpv.png
-/usr/share/icons/hicolor/64x64/apps/mpv.png
-/usr/share/icons/hicolor/scalable/apps/mpv.svg
-/usr/share/icons/hicolor/symbolic/apps/mpv-symbolic.svg
-/usr/share/zsh/site-functions/_mpv
-
-%files dev
-%defattr(-,root,root,-)
-/usr/include/mpv/client.h
-/usr/include/mpv/opengl_cb.h
-/usr/include/mpv/render.h
-/usr/include/mpv/render_gl.h
-/usr/include/mpv/stream_cb.h
-/usr/lib64/pkgconfig/mpv.pc
-
-%files doc
-%defattr(0644,root,root,0755)
-%doc /usr/share/doc/mpv/*
-
-%files staticdev
-%defattr(-,root,root,-)
-/usr/lib64/libmpv.a

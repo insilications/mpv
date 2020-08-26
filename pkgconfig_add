@@ -30,6 +30,7 @@ dbus-c++-1
 dbus-c++-ecore-1
 dbus-c++-glib-1
 dri
+dri2proto
 dvdnav
 dvdread
 egl
@@ -181,10 +182,14 @@ x11
 x264
 x265
 xatracker
+xcomposite
+xcursor
+xdamage
 xdg-desktop-portal
 xext
 xinerama
 xkbcommon
+xorg-server
 xrandr
 xscrnsaver
 zimg
