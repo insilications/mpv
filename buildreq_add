@@ -202,6 +202,7 @@ libXdmcp-dev
 libXdmcp-lib
 libXext-dev
 libXext-lib
+libXfont2-dev
 libXft-dev
 libXft-lib
 libXi-dev
@@ -311,6 +312,7 @@ rubberband-dev
 rubberband-staticdev
 SDL2
 SDL2-dev
+SDL2-staticdev
 setxkbmap
 shaderc
 shaderc-dev
@@ -367,6 +369,7 @@ xrandr
 xrdb
 xrdp
 xrestop
+xscreensaver
 xsel
 xset
 xsetroot

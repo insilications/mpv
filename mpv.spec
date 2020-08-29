@@ -17,6 +17,7 @@ BuildRequires : LuaJIT-dev
 BuildRequires : LuaJIT-staticdev
 BuildRequires : SDL2
 BuildRequires : SDL2-dev
+BuildRequires : SDL2-staticdev
 BuildRequires : Sphinx
 BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
@@ -601,7 +602,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598479722
+export SOURCE_DATE_EPOCH=1598688973
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -659,7 +660,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1598479722
+export SOURCE_DATE_EPOCH=1598688973
 rm -rf %{buildroot}
 ## install_prepend content
 
