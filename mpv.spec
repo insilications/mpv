@@ -601,7 +601,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598479312
+export SOURCE_DATE_EPOCH=1598479722
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -659,7 +659,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1598479312
+export SOURCE_DATE_EPOCH=1598479722
 rm -rf %{buildroot}
 ## install_prepend content
 
