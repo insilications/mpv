@@ -12,9 +12,6 @@ Summary  : mpv media player client library
 Group    : Development/Tools
 License  : GPL-2.0
 BuildRequires : ImageMagick-dev
-BuildRequires : LuaJIT
-BuildRequires : LuaJIT-dev
-BuildRequires : LuaJIT-staticdev
 BuildRequires : SDL2
 BuildRequires : SDL2-dev
 BuildRequires : SDL2-staticdev
@@ -117,6 +114,7 @@ BuildRequires : libXdmcp-dev
 BuildRequires : libXdmcp-lib
 BuildRequires : libXext-dev
 BuildRequires : libXext-lib
+BuildRequires : libXfont2-dev
 BuildRequires : libXft-dev
 BuildRequires : libXft-lib
 BuildRequires : libXi-dev
@@ -253,6 +251,9 @@ BuildRequires : mesa
 BuildRequires : mesa-dev
 BuildRequires : mesa-lib
 BuildRequires : mm-common-dev
+BuildRequires : moonjit
+BuildRequires : moonjit-dev
+BuildRequires : moonjit-staticdev
 BuildRequires : nasm
 BuildRequires : nasm-bin
 BuildRequires : nettle
@@ -347,6 +348,7 @@ BuildRequires : pkgconfig(dbus-c++-ecore-1)
 BuildRequires : pkgconfig(dbus-c++-glib-1)
 BuildRequires : pkgconfig(dri)
 BuildRequires : pkgconfig(dri2proto)
+BuildRequires : pkgconfig(dri3proto)
 BuildRequires : pkgconfig(dvdnav)
 BuildRequires : pkgconfig(dvdread)
 BuildRequires : pkgconfig(egl)
@@ -426,6 +428,7 @@ BuildRequires : pkgconfig(libswresample)
 BuildRequires : pkgconfig(libswscale)
 BuildRequires : pkgconfig(libtasn1)
 BuildRequires : pkgconfig(libturbojpeg)
+BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(libunistring)
 BuildRequires : pkgconfig(libunwind)
 BuildRequires : pkgconfig(libunwind-coredump)
@@ -457,7 +460,9 @@ BuildRequires : pkgconfig(openssl)
 BuildRequires : pkgconfig(opus)
 BuildRequires : pkgconfig(osmesa)
 BuildRequires : pkgconfig(p11-kit-1)
+BuildRequires : pkgconfig(pciaccess)
 BuildRequires : pkgconfig(pixman-1)
+BuildRequires : pkgconfig(presentproto)
 BuildRequires : pkgconfig(python-3.8)
 BuildRequires : pkgconfig(python-3.8-embed)
 BuildRequires : pkgconfig(readline)
@@ -474,6 +479,7 @@ BuildRequires : pkgconfig(srt)
 BuildRequires : pkgconfig(theora)
 BuildRequires : pkgconfig(uchardet)
 BuildRequires : pkgconfig(uuid)
+BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(vamp)
 BuildRequires : pkgconfig(vamp-hostsdk)
 BuildRequires : pkgconfig(vamp-sdk)
@@ -490,19 +496,54 @@ BuildRequires : pkgconfig(wayland-client)
 BuildRequires : pkgconfig(wayland-cursor)
 BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : pkgconfig(x11)
+BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : pkgconfig(x264)
 BuildRequires : pkgconfig(x265)
 BuildRequires : pkgconfig(xatracker)
+BuildRequires : pkgconfig(xcb)
+BuildRequires : pkgconfig(xcb-aux)
+BuildRequires : pkgconfig(xcb-composite)
+BuildRequires : pkgconfig(xcb-damage)
+BuildRequires : pkgconfig(xcb-dpms)
+BuildRequires : pkgconfig(xcb-dri2)
+BuildRequires : pkgconfig(xcb-dri3)
+BuildRequires : pkgconfig(xcb-glx)
+BuildRequires : pkgconfig(xcb-present)
+BuildRequires : pkgconfig(xcb-randr)
+BuildRequires : pkgconfig(xcb-record)
+BuildRequires : pkgconfig(xcb-render)
+BuildRequires : pkgconfig(xcb-res)
+BuildRequires : pkgconfig(xcb-screensaver)
+BuildRequires : pkgconfig(xcb-shape)
+BuildRequires : pkgconfig(xcb-shm)
+BuildRequires : pkgconfig(xcb-sync)
+BuildRequires : pkgconfig(xcb-xf86dri)
+BuildRequires : pkgconfig(xcb-xfixes)
+BuildRequires : pkgconfig(xcb-xinerama)
+BuildRequires : pkgconfig(xcb-xinput)
+BuildRequires : pkgconfig(xcb-xkb)
+BuildRequires : pkgconfig(xcb-xtest)
+BuildRequires : pkgconfig(xcb-xv)
+BuildRequires : pkgconfig(xcb-xvmc)
 BuildRequires : pkgconfig(xcomposite)
 BuildRequires : pkgconfig(xcursor)
 BuildRequires : pkgconfig(xdamage)
 BuildRequires : pkgconfig(xdg-desktop-portal)
 BuildRequires : pkgconfig(xext)
+BuildRequires : pkgconfig(xf86driproto)
+BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xfont)
 BuildRequires : pkgconfig(xinerama)
 BuildRequires : pkgconfig(xkbcommon)
+BuildRequires : pkgconfig(xorg-macros)
 BuildRequires : pkgconfig(xorg-server)
 BuildRequires : pkgconfig(xrandr)
+BuildRequires : pkgconfig(xrender)
 BuildRequires : pkgconfig(xscrnsaver)
+BuildRequires : pkgconfig(xshmfence)
+BuildRequires : pkgconfig(xtst)
+BuildRequires : pkgconfig(xvmc)
+BuildRequires : pkgconfig(xxf86vm)
 BuildRequires : pkgconfig(zimg)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : pulseaudio
@@ -568,6 +609,7 @@ BuildRequires : xrandr
 BuildRequires : xrdb
 BuildRequires : xrdp
 BuildRequires : xrestop
+BuildRequires : xscreensaver
 BuildRequires : xsel
 BuildRequires : xset
 BuildRequires : xsetroot
@@ -594,15 +636,15 @@ adding features like automatically freeing sub-trees of memory allocations if
 a parent allocation is freed.
 
 %prep
-%setup -q -n clone_archive
-cd %{_builddir}/clone_archive
+%setup -q -n mpv
+cd %{_builddir}/mpv
 
 %build
 unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598688973
+export SOURCE_DATE_EPOCH=1598776209
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -653,6 +695,9 @@ export LIBVA_DRIVERS_PATH="/usr/lib64/dri"
 # -fPIC -Wl,-Bstatic
 # -Wl,-Bstatic /usr/cuda/lib64/libcublasLt_static.a /usr/cuda/lib64/libcublas_static.a /usr/cuda/lib64/libcudadevrt.a /usr/cuda/lib64/libcudart_static.a /usr/cuda/lib64/libcufft_static_nocallback.a /usr/cuda/lib64/libcufftw_static.a /usr/cuda/lib64/libculibos.a /usr/cuda/lib64/libcurand_static.a /usr/cuda/lib64/libcusolver_static.a /usr/cuda/lib64/libcusparse_static.a /usr/cuda/lib64/liblapack_static.a /usr/cuda/lib64/libmetis_static.a /usr/cuda/lib64/libnppc_static.a /usr/cuda/lib64/libnppial_static.a /usr/cuda/lib64/libnppicc_static.a /usr/cuda/lib64/libnppidei_static.a /usr/cuda/lib64/libnppif_static.a /usr/cuda/lib64/libnppig_static.a /usr/cuda/lib64/libnppim_static.a /usr/cuda/lib64/libnppist_static.a /usr/cuda/lib64/libnppisu_static.a /usr/cuda/lib64/libnppitc_static.a /usr/cuda/lib64/libnpps_static.a /usr/cuda/lib64/libnvjpeg_static.a
 ## altflags1 end
+##
+%define _lto_cflags 1
+##
 ## make_prepend content
 
 ## make_prepend end
@@ -660,7 +705,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1598688973
+export SOURCE_DATE_EPOCH=1598776209
 rm -rf %{buildroot}
 ## install_prepend content
 

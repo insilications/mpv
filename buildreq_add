@@ -14,6 +14,7 @@ binutils
 binutils-dev
 binutils-staticdev
 brotli
+ladspa_sdk-staticdev
 brotli-dev
 brotli-staticdev
 bzip2
@@ -224,9 +225,9 @@ libXxf86vm-lib
 libzimg-dev
 libzimg-staticdev
 llvm-lib
-LuaJIT
-LuaJIT-dev
-LuaJIT-staticdev
+moonjit
+moonjit-dev
+moonjit-staticdev
 lz4
 lz4-dev
 lz4-staticdev
