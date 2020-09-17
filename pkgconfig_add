@@ -16,6 +16,10 @@ cairo-glx
 cairo-gobject
 cairo-pdf
 cairo-png
+libudfread
+udfread
+SvtAv1Dec
+SvtAv1Enc
 cairo-ps
 cairo-script
 cairo-svg

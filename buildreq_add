@@ -29,6 +29,10 @@ cuda-dev
 cuda-staticdev
 dbus-dev
 evtest
+libudfread-dev
+libudfread-staticdev
+SVT-AV1-dev
+SVT-AV1-staticdev
 expat-dev
 expat-staticdev
 ffmpeg
