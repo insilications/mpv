@@ -14,7 +14,6 @@ binutils
 binutils-dev
 binutils-staticdev
 brotli
-ladspa_sdk-staticdev
 brotli-dev
 brotli-staticdev
 bzip2
@@ -29,15 +28,13 @@ cuda-dev
 cuda-staticdev
 dbus-dev
 evtest
-libudfread-dev
-libudfread-staticdev
-SVT-AV1-dev
-SVT-AV1-staticdev
 expat-dev
 expat-staticdev
 ffmpeg
 ffmpeg-dev
 ffmpeg-staticdev
+fftw-dev
+fftw-staticdev
 findutils
 flac
 flac-dev
@@ -87,6 +84,7 @@ ladspa_sdk
 ladspa_sdk-bin
 ladspa_sdk-dev
 ladspa_sdk-lib
+ladspa_sdk-staticdev
 lcms2
 lcms2-dev
 lcms2-staticdev
@@ -160,6 +158,8 @@ libtasn1-dev
 libtasn1-staticdev
 libtheora-dev
 libtheora-staticdev
+libudfread-dev
+libudfread-staticdev
 libunistring-dev
 libunistring-staticdev
 libunwind
@@ -229,9 +229,6 @@ libXxf86vm-lib
 libzimg-dev
 libzimg-staticdev
 llvm-lib
-moonjit
-moonjit-dev
-moonjit-staticdev
 lz4
 lz4-dev
 lz4-staticdev
@@ -246,6 +243,9 @@ mesa
 mesa-dev
 mesa-lib
 mm-common-dev
+moonjit
+moonjit-dev
+moonjit-staticdev
 nasm
 nasm-bin
 nettle
@@ -329,6 +329,8 @@ speexdsp-dev
 speexdsp-staticdev
 speex-staticdev
 Sphinx
+SVT-AV1-dev
+SVT-AV1-staticdev
 systemd
 systemd-dev
 texinfo

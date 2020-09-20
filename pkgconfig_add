@@ -16,10 +16,6 @@ cairo-glx
 cairo-gobject
 cairo-pdf
 cairo-png
-libudfread
-udfread
-SvtAv1Dec
-SvtAv1Enc
 cairo-ps
 cairo-script
 cairo-svg
@@ -45,6 +41,7 @@ fdisk
 fdk-aac
 ffnvcodec
 fftw3
+fftw3l
 flac
 flac++
 fontconfig
@@ -116,6 +113,7 @@ libswscale
 libtasn1
 libturbojpeg
 libudev
+libudfread
 libunistring
 libunwind
 libunwind-coredump
@@ -165,11 +163,15 @@ shaderc_static
 smartcols
 sndfile
 speex
+speexdsp
 SPIRV-Tools
 SPIRV-Tools-shared
 srt
+SvtAv1Dec
+SvtAv1Enc
 theora
 uchardet
+udfread
 uuid
 valgrind
 vamp
