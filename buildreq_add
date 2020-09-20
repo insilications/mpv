@@ -17,6 +17,8 @@ brotli
 brotli-dev
 brotli-staticdev
 bzip2
+l-smash-dev
+l-smash-staticdev
 bzip2-dev
 bzip2-staticdev
 cairo

@@ -21,6 +21,7 @@ cairo-script
 cairo-svg
 cairo-xcb
 cairo-xcb-shm
+liblsmash
 cairo-xlib
 cairo-xlib-xcb
 cairo-xlib-xrender
