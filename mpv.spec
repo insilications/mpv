@@ -751,9 +751,9 @@ export DISPLAY=:0
 #export LIBGL_ALWAYS_INDIRECT=1
 #export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
 #export __GL_SYNC_TO_VBLANK=0
-export VDPAU_DRIVER="nvidia"
-export LIBVA_DRIVER_NAME="vdpau"
-export LIBVA_DRIVERS_PATH="/usr/lib64/dri"
+export VDPAU_DRIVER=nvidia
+export LIBVA_DRIVER_NAME=vdpau
+export LIBVA_DRIVERS_PATH=/usr/lib64/dri
 ## altflags1 end
 ##
 %define _lto_cflags 1
